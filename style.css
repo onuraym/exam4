@@ -1,0 +1,192 @@
+@import url(./variables.css);
+body{
+  margin: 0;
+  padding: 17px 0 0 25px;
+  font-family: 'Nunito', sans-serif;
+  background: var(--blue-color);
+}
+
+h1 {
+  margin: 0;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 55px;
+  text-transform: uppercase;
+  color: var(--white-color);
+}
+h3 {
+  margin: 0 0 20px 0;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 25px;
+  text-transform: uppercase;
+  color: var(--white-color);
+
+}
+.create-task_button {
+  margin-bottom: 31px;
+  width: 287px;
+  height: 40px;
+  background: #F5D57F;
+  border-radius: 4px;
+  border: none;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  color: var(--black-color);
+}
+
+.modal-overlay {
+  position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+  opacity: 0;
+	visibility: hidden;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+	transform: scale(1.1);
+	transition: visibility 0s linear 0.25s, 
+				opacity 0.25s 0s,
+				transform 0.25s;
+}
+.modal-content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color:#FFFBE3;
+	width: 328px;
+  /* padding: 49px 45px 49px 44px; */
+}
+
+.show-modal {
+	opacity: 1;
+	visibility: visible;
+	transform: scale(1.0);
+	transition: visibility 0s linear 0s, 
+				opacity 0.25s 0s,
+				transform 0.25s;
+}
+.close-btn {
+  width: 14px;
+  height: 14px;
+  margin: 19px 0 0 0;
+}
+
+.modal_header{
+  display: flex;
+  justify-content: space-around;
+}
+
+.modal__title {
+  margin: 19px 0 0 20px;
+  font-size: 20px;
+  line-height: 27px;
+  color: #000000;
+}
+
+.title-input{
+  width: 288px;
+  height: 40px;
+  background: var(--white-color);
+  border: 1px solid var(--blue-color);
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin: 14px 20px 17px 20px;
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--gray-color);
+}
+.description-input {
+  width: 288px;
+  height: 100px;
+  background: var(--white-color);
+  border: 1px solid var(--blue-color);
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin: 0 20px 10px 20px;
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--gray-color);
+}
+
+.error-text{
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  color: #AC4141;
+  margin: 0 0 16px 21px;
+}
+
+.save-button {
+  background: #5F81B3;
+  border-radius: 4px;
+  width: 287px;
+  height: 40px;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  color: var(--white-color);
+  border: none;
+  margin: 0 20px 10px 21px;
+}
+.cancel-button {
+  width: 287px;
+  height: 40px;
+  background: #AEAEAE;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  color: var(--white-color);
+  border: none;
+  margin: 0 20px 25px 21px;
+}
+
+.tasks {
+  margin: 0;
+  padding: 0;
+}
+.task {
+  width: 323px;
+  height: 126px;
+  margin: 20px 26px 20px 0px;
+  font-size: 18px;
+  background: #FFFBE3;
+  border-radius: 4px;
+  box-shadow: 4px 3px 10px rgba(0,0,0,0.3);
+  list-style: none;
+}
+.task_title {
+  padding: 16px 16px 0px 21px;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--black-color);
+  margin-bottom: 7px;
+}
+.task_description{
+  margin: 0;
+  padding: 0px 0px 7px 21px;
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--black-color);
+}
+
+.task_header{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 15px 0;
+}
+#checkbox {
+  width: 22px;
+  height: 22px;
+  margin: 14px 17px 0 0;
+}
+.delete_button{
+  float: right;
+  margin: 0 17px 0 0;
+}
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./script.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <h1>Todolist</h1>
+  <h3>by name surname</h3>
+  <button class="create-task_button">Создать новую задачу</button>
+
+  <div class="modal-overlay">
+    <div class="modal-content">
+      <form class="form">
+        <div class="modal_header">
+          <p class="modal__title">Создать задачу</p>
+          <img src="./assets/close_icon.png" alt="" class="close-btn">
+        </div>
+        <input type="text" name="title" placeholder="заголовок" class="title-input">
+        <textarea class="description-input" name="description" placeholder="описание"></textarea>
+        <p class="error-text">error!</p>
+        <button type="submit" class="save-button">Сохранить</button>
+        <button type="submit" class="cancel-button">Отмена</button>
+      </form>
+    </div>    
+  </div>
+
+  <h3>Список задач</h3>
+  <ul class="tasks">
+    <li class="task">
+
+      <div class="task_header">
+        <div class="task_title">Заголовок задачи</div>
+        <input type="checkbox" id="checkbox">
+      </div>
+      
+      <div class="task_description">Описание задачи</div>
+      <img src="./assets/delete_icon.png" alt="delete icon" class="delete_button">
+    </li>
+  </ul>
+</body>
+</html>
