@@ -1,0 +1,35 @@
+@import url(./variables.css);
+@import url(./createModal.css);
+@import url(./deleteModal.css);
+@import url(./tasks.css);
+body{
+  margin: 0;
+  padding: 17px 0 0 25px;
+  font-family: 'Nunito', sans-serif;
+  background: var(--blue-color);
+}
+
+h1 {
+  margin: 0;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 55px;
+  text-transform: uppercase;
+  color: var(--white-color);
+}
+h3 {
+  margin: 0 0 20px 0;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 25px;
+  text-transform: uppercase;
+  color: var(--white-color);
+
+}
+
+
+
+
+
+
+

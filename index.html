@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./styles/styles.css">
   <script defer src="./index.js"></script>
   <title>Document</title>
 </head>
@@ -16,12 +16,12 @@
   <h3>by name surname</h3>
   <button class="create-task_button">Создать новую задачу</button>
 
-  <div class="modal-overlay">
-    <div class="modal-content">
+  <div class="create-task_modal-overlay">
+    <div class="create-modal-content">
       <form class="form">
         <div class="modal_header">
           <p class="modal__title">Создать задачу</p>
-          <img src="./assets/close_icon.png" alt="" class="close-btn">
+          <img src="./assets/close_icon.png" alt="" class="create-modal_close-btn">
         </div>
         <input type="text" placeholder="заголовок" class="title-input">
         <textarea class="description-input" placeholder="описание"></textarea>
@@ -38,12 +38,26 @@
 
       <div class="task_header">
         <div class="task_title">Заголовок задачи</div>
-        <input type="checkbox" id="checkbox">
+        <input type="checkbox" class="checkbox" onchange="addClassName();">
       </div>
       
       <div class="task_description">Описание задачи</div>
       <img src="./assets/delete_icon.png" alt="delete icon" class="delete_button">
     </li>
   </ul>
+
+  <div class="delete-modal_overlay">
+    <div class="delete-modal-content">
+      <div class="modal_header">
+        <h4>Вы уверены что хотите удалить задачу навсегда?</h4>
+        <img src="./assets/close_icon.png" alt="" class="delete-modal_close-btn">
+      </div>
+    
+      <button type="submit" class="delete-button">Удалить</button>
+      <button type="submit" class="cancel-button">Отмена</button>
+    </div> 
+  </div>
+   
+
 </body>
 </html>

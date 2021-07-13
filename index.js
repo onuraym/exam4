@@ -1,26 +1,42 @@
-const modal = document.querySelector(".modal-overlay");
-const openBtn = document.querySelector(".create-task_button");
-const closeBtn = document.querySelector(".close-btn");
+//CREATE TASK MODAL WINDOW
+const createTaskModal = document.querySelector(".create-task_modal-overlay");
+const openCreateBtn = document.querySelector(".create-task_button");
+const closeCreateModalBtn = document.querySelector(".create-modal_close-btn");
+const cencelButton = document.querySelector(".cancel-button");
 
-		// переключаем класс у модалки
-		// на тот, у которого есть нужные свойства (show-modal)
-
-function toggleModal () {
-	modal.classList.toggle("show-modal");
+function toggleCreateTaskModal () {
+	createTaskModal.classList.toggle("show-modal");
 }
 
 function windowOnClick(event) {
-	if(event.target === modal){
-		toggleModal();
+	if(event.target === createTaskModal){
+		toggleCreateTaskModal();
 	}
 }
 
 window.addEventListener("click", windowOnClick);
-openBtn.addEventListener("click", toggleModal)
-closeBtn.addEventListener("click", toggleModal)
+openCreateBtn.addEventListener("click", toggleCreateTaskModal)
+closeCreateModalBtn.addEventListener("click", toggleCreateTaskModal)
 
-const form = document.querySelector(".form");
-const name = document.querySelector(".name")
+
+//DELETE TASK MODAL WINDOW
+const deleteModal = document.querySelector(".delete-modal_overlay");
+const openDeleteBtn = document.querySelector(".delete_button")
+const closeDeleteModalBtn = document.querySelector(".delete-modal_close-btn")
+
+function toggleDeleteModal () {
+	deleteModal.classList.toggle("show-modal2");
+}
+
+function windowOnClick2(event) {
+	if(event.target === deleteModal){
+		toggleDeleteModal();
+	}
+}
+
+window.addEventListener("click", windowOnClick2);
+openDeleteBtn.addEventListener("click", toggleDeleteModal)
+closeDeleteModalBtn.addEventListener("click", toggleDeleteModal)
 
 //
 
@@ -31,10 +47,10 @@ const titleInput = document.querySelector(".title-input");
 const descriptionInput = document.querySelector(".description-input")
 
 const createElement = (tag, className, innerTxt) => {
-  if(!tag){
-    alert("Внутренняя ошибка сервиса!");
-    return;
-  }
+  // if(!tag){
+  //   alert("Внутренняя ошибка сервиса!");
+  //   return;
+  // }
 
   const element = document.createElement(tag);
 
@@ -49,18 +65,37 @@ const createElement = (tag, className, innerTxt) => {
   return element;
 }
 
-const prependElement = () => {
+const prependElement = (event) => {
+  event.preventDefault();
   const task = createElement("li", "task");
   const taskHeader = createElement("div", "task_header")
-  task.append(taskHeader);
+  
   const title = createElement("div","task_title", titleInput.value);
+  const deleteIcon = createElement("IMG", "delete_button");
+  deleteIcon.src = "./assets/delete_icon.png";
   const description = createElement("div", "task_description", descriptionInput.value);
+  const checkbox = createElement("input", "checkbox")
+  checkbox.setAttribute("type", "checkbox");
 
-  taskHeader.append(title);
+  taskHeader.append(title, checkbox);
+  task.append(taskHeader, description, deleteIcon);
   tasks.prepend(task);
 
   titleInput.value = " ";
   descriptionInput.value = " ";
+  toggleModal();
+}
+
+const addClassName = () =>{
+  // event.preventDefault();
+  const title = document.querySelector(".task_header div")
+  title.classList.toggle("crossOut");
 }
 
 saveBtn.addEventListener("click", prependElement);
+
+const checkbox = document.querySelector(".checkbox");
+// const title = document.querySelector(".task_title")
+// checkbox.addEventListener("checked", addClassName);
+
+

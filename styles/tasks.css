@@ -1,0 +1,48 @@
+.tasks {
+  margin: 0;
+  padding: 0;
+}
+
+.task {
+  width: 323px;
+  height: 126px;
+  margin: 20px 26px 20px 0px;
+  font-size: 18px;
+  background: #FFFBE3;
+  border-radius: 4px;
+  box-shadow: 4px 3px 10px rgba(0,0,0,0.3);
+  list-style: none;
+}
+.task_title {
+  padding: 16px 16px 0px 21px;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--black-color);
+  margin-bottom: 7px;
+}
+.task_description{
+  margin: 0;
+  padding: 0px 0px 7px 21px;
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--black-color);
+}
+
+.task_header{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 15px 0;
+}
+#checkbox {
+  width: 22px;
+  height: 22px;
+  margin: 14px 17px 0 0;
+}
+.crossOut{
+  text-decoration: line-through;
+}
+.delete_button{
+  float: right;
+  margin: 0 17px 0 0;
+}
