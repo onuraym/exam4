@@ -104,6 +104,6 @@ saveBtn.addEventListener("click", prependElement);
 
 const checkbox = document.querySelector(".checkbox");
 // const title = document.querySelector(".task_title")
-// checkbox.addEventListener("checked", addClassName);
+checkbox.addEventListener("checked", addClassName);
 
 
