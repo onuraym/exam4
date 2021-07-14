@@ -2,9 +2,10 @@
 const createTaskModal = document.querySelector(".create-task_modal-overlay");
 const openCreateBtn = document.querySelector(".create-task_button");
 const closeCreateModalBtn = document.querySelector(".create-modal_close-btn");
-const cencelButton = document.querySelector(".cancel-button");
+const cencelButton = document.querySelector(".create-modal_cancel-button");
 
-function toggleCreateTaskModal () {
+function toggleCreateTaskModal (event) {
+  event.preventDefault();
 	createTaskModal.classList.toggle("show-modal");
 }
 
@@ -17,7 +18,7 @@ function windowOnClick(event) {
 window.addEventListener("click", windowOnClick);
 openCreateBtn.addEventListener("click", toggleCreateTaskModal)
 closeCreateModalBtn.addEventListener("click", toggleCreateTaskModal)
-
+cencelButton.addEventListener("click", toggleCreateTaskModal);
 
 //DELETE TASK MODAL WINDOW
 const deleteModal = document.querySelector(".delete-modal_overlay");
@@ -38,6 +39,7 @@ window.addEventListener("click", windowOnClick2);
 openDeleteBtn.addEventListener("click", toggleDeleteModal)
 closeDeleteModalBtn.addEventListener("click", toggleDeleteModal)
 
+
 //
 
 const saveBtn = document.querySelector(".save-button");
@@ -45,6 +47,7 @@ const tasks = document.querySelector(".tasks");
 
 const titleInput = document.querySelector(".title-input");
 const descriptionInput = document.querySelector(".description-input")
+const errorText = document.querySelector(".error-text");
 
 const createElement = (tag, className, innerTxt) => {
   // if(!tag){
@@ -65,8 +68,8 @@ const createElement = (tag, className, innerTxt) => {
   return element;
 }
 
-const prependElement = (event) => {
-  event.preventDefault();
+const prependElement = (e) => {
+  e.preventDefault();
   const task = createElement("li", "task");
   const taskHeader = createElement("div", "task_header")
   
@@ -77,17 +80,22 @@ const prependElement = (event) => {
   const checkbox = createElement("input", "checkbox")
   checkbox.setAttribute("type", "checkbox");
 
+  if(!titleInput.value){
+    errorText.innerHTML = "Заполните заголовок!";
+  }
+  else{
   taskHeader.append(title, checkbox);
   task.append(taskHeader, description, deleteIcon);
   tasks.prepend(task);
 
   titleInput.value = " ";
   descriptionInput.value = " ";
-  toggleModal();
+  toggleCreateTaskModal(e);
+  }
+  
 }
 
 const addClassName = () =>{
-  // event.preventDefault();
   const title = document.querySelector(".task_header div")
   title.classList.toggle("crossOut");
 }

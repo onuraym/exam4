@@ -37,4 +37,40 @@
   width: 14px;
   height: 14px;
   margin: 19px 0 0 0;
+	padding: 22px 25px 0 0;
+	margin: 0;
+}
+
+.delete-button {
+	background: #AC4141;
+	border-radius: 4px;
+	width: 287px;
+	height: 40px;
+	font-size: 16px;
+	line-height: 22px;
+	text-align: center;
+	color: var(--white-color);
+	border: none;
+	margin: 0 21px 10px 20px;
+}
+
+.delete-modal_title{
+	font-size: 20px;
+	line-height: 27px;
+	color: #000000;
+	padding: 19px 55px 24px 20px;
+	margin: 0;
+}
+
+.delete-modal_cancel-button {
+  width: 287px;
+  height: 40px;
+  background: #AEAEAE;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  color: var(--white-color);
+  border: none;
+  margin: 0 20px 25px 21px;
 }

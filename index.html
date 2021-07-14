@@ -12,27 +12,29 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>Todolist</h1>
-  <h3>by name surname</h3>
+  <h1 id="logo">Todolist</h1>
+  <h3 class="under-logo_text">by name surname</h3>
   <button class="create-task_button">Создать новую задачу</button>
 
   <div class="create-task_modal-overlay">
     <div class="create-modal-content">
-      <form class="form">
+      
+      <form action="">
         <div class="modal_header">
           <p class="modal__title">Создать задачу</p>
           <img src="./assets/close_icon.png" alt="" class="create-modal_close-btn">
         </div>
         <input type="text" placeholder="заголовок" class="title-input">
         <textarea class="description-input" placeholder="описание"></textarea>
-        <p class="error-text">error!</p>
+        <p class="error-text"></p>
         <button type="submit" class="save-button">Сохранить</button>
-        <button type="submit" class="cancel-button">Отмена</button>
+        <button type="submit" class="cancel-button create-modal_cancel-button">Отмена</button>
       </form>
+  
     </div>    
   </div>
 
-  <h3>Список задач</h3>
+  <h3 class="task-list">Список задач</h3>
   <ul class="tasks">
     <li class="task">
 
@@ -49,12 +51,12 @@
   <div class="delete-modal_overlay">
     <div class="delete-modal-content">
       <div class="modal_header">
-        <h4>Вы уверены что хотите удалить задачу навсегда?</h4>
+        <h4 class="delete-modal_title">Вы уверены что хотите удалить задачу навсегда?</h4>
         <img src="./assets/close_icon.png" alt="" class="delete-modal_close-btn">
       </div>
     
       <button type="submit" class="delete-button">Удалить</button>
-      <button type="submit" class="cancel-button">Отмена</button>
+      <button type="submit" class="cancel-button delete-modal_cancel-button">Отмена</button>
     </div> 
   </div>
    

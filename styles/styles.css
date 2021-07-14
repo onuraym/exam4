@@ -1,7 +1,10 @@
+/* @import url(./adaptive.css); */
 @import url(./variables.css);
 @import url(./createModal.css);
 @import url(./deleteModal.css);
 @import url(./tasks.css);
+
+
 body{
   margin: 0;
   padding: 17px 0 0 25px;
@@ -9,7 +12,7 @@ body{
   background: var(--blue-color);
 }
 
-h1 {
+#logo {
   margin: 0;
   font-weight: 900;
   font-size: 40px;
@@ -17,14 +20,77 @@ h1 {
   text-transform: uppercase;
   color: var(--white-color);
 }
-h3 {
+.under-logo_text {
   margin: 0 0 20px 0;
   font-weight: 900;
   font-size: 18px;
   line-height: 25px;
   text-transform: uppercase;
   color: var(--white-color);
+}
 
+/* DESKTOP */
+
+@media only screen and (max-width: 1440px) and (min-width: 1024px){
+  body{
+    padding: 0;
+    position: relative;
+    
+  }
+  
+  #logo {
+    font-size: 60px;
+    line-height: 82px;
+    padding: 54px 911px 0 221px;
+  }
+
+  .under-logo_text {
+    margin: 0;
+    padding: 0 0 86px 221px;
+  }
+   
+  .create-task_button {
+    position: absolute;
+    top: 79px;
+    right: 128px;
+  }
+
+  .task-list{
+    font-size: 22px;
+    line-height: 30px;
+    padding-left: 221px;
+  }
+
+  .task {
+    width: 490px;
+    margin: 36px 19px 20px 221px;
+  }
+
+  .delete_button{
+    margin: 0 0 13px 453px;
+  }
+  
+  /* Createm modal adaptive */
+  .create-modal-content {
+    width: 500px;
+  }
+  
+  .title-input{
+    width: 460px;
+  }
+  .description-input {
+    width: 460px;
+  }
+
+  .save-button {
+    width: 459px;
+  }
+  
+  .create-modal_cancel-button {
+    width: 459px;
+  }
+  
+  
 }
 
 

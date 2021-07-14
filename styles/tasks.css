@@ -2,12 +2,17 @@
   margin: 0;
   padding: 0;
 }
-
+.task-list{
+  margin: 0;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 25px;
+  text-transform: uppercase;
+  color: var(--white-color);
+}
 .task {
   width: 323px;
-  height: 126px;
   margin: 20px 26px 20px 0px;
-  font-size: 18px;
   background: #FFFBE3;
   border-radius: 4px;
   box-shadow: 4px 3px 10px rgba(0,0,0,0.3);
@@ -19,7 +24,6 @@
   font-size: 16px;
   line-height: 22px;
   color: var(--black-color);
-  margin-bottom: 7px;
 }
 .task_description{
   margin: 0;
@@ -32,9 +36,9 @@
 .task_header{
   display: flex;
   justify-content: space-between;
-  margin: 0 0 15px 0;
+  margin: 0 0 7px 0;
 }
-#checkbox {
+.checkbox {
   width: 22px;
   height: 22px;
   margin: 14px 17px 0 0;
@@ -43,6 +47,5 @@
   text-decoration: line-through;
 }
 .delete_button{
-  float: right;
-  margin: 0 17px 0 0;
+  margin: 0 0 13px 286px;
 }
