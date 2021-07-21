@@ -1,125 +1,138 @@
-const modal = document.querySelector(".modal-overlay");
-const openBtn = document.querySelector(".create-task_button");
-const closeBtn = document.querySelector(".close-btn");
+//CREATE TASK MODAL WINDOW
+const createTaskModal = document.querySelector('.create-task_modal-overlay');
+const openCreateBtn = document.querySelector('.create-task_button');
+const closeCreateModalBtn = document.querySelector('.create-modal_close-btn');
+const cencelButton = document.querySelector('.create-modal_cancel-button');
 
-		// переключаем класс у модалки
-		// на тот, у которого есть нужные свойства (show-modal)
-
-function toggleModal () {
-	modal.classList.toggle("show-modal");
+function toggleCreateTaskModal () {
+	createTaskModal.classList.toggle('create_show-modal');
 }
 
 function windowOnClick(event) {
-	if(event.target === modal){
-		toggleModal();
+	if(event.target === createTaskModal){
+		toggleCreateTaskModal();
 	}
 }
 
-window.addEventListener("click", windowOnClick);
-openBtn.addEventListener("click", toggleModal)
-closeBtn.addEventListener("click", toggleModal)
-
-const form = document.querySelector(".form");
-const name = document.querySelector(".name")
+window.addEventListener('click', windowOnClick);
+openCreateBtn.addEventListener('click', toggleCreateTaskModal)
+closeCreateModalBtn.addEventListener('click', toggleCreateTaskModal)
+cencelButton.addEventListener('click', toggleCreateTaskModal);
 
 
-// let formObj = {};
+//DELETE TASK MODAL WINDOW
+const deleteModal = document.querySelector(".delete-modal_overlay");
+const openDeleteBtn = document.querySelector(".delete_button");
+const closeDeleteModalBtn = document.querySelector(".delete-modal_close-btn");
+const deleteCancelBtn = document.querySelector(".delete-modal_cancel-button");
 
-// form.onsubmit = function() {
-//   var name = this.name.value;
-//   var email = this.email.value;
-//   var text = this.text.value;
-//   formObj.name = name;
-//   formObj.email = email;
-//   formObj.text = text;
-//   console.log(formObj);
-//   return false;
-// };
+function toggleDeleteModal () {
+	deleteModal.classList.toggle("delete_show-modal");
+}
 
-const tasksArray = [
-  {
-    title: "it academy",
-    task: " hello. I'm It Academy"
-  },
-  {
-    title: "Nuraym",
-    task: "Hello! I'm Nuraym"
-  }
-]
+function windowOnClick2(event) {
+	if(event.target === deleteModal){
+		toggleDeleteModal();
+	}
+}
 
-const saveBtn = document.querySelector(".save-button");
-const tasks = document.querySelector(".tasks");
+window.addEventListener("click", windowOnClick2);
+deleteCancelBtn.addEventListener("click", toggleDeleteModal)
+closeDeleteModalBtn.addEventListener("click", toggleDeleteModal)
 
-const titleInput = document.querySelector(".title-input");
-const descriptionInput = document.querySelector(".description-input")
-
-const createElement = (tag, className, innerTxt) => {
-  if(!tag){
-    alert("Внутренняя ошибка сервиса!");
-    return;
-  }
-
-  const element = document.createElement(tag);
-
-  if(className) {
-    element.className = className;
-  }
-
-  if(innerTxt) {
-    element.innerText = innerTxt;
-  } 
-
+//create tasks
+let taskId = 1;
+let taskArr = [];
+ 
+const form = document.getElementById('form');
+const tasks = document.getElementById('tasks');
+const errorText = document.querySelector(".error-text");
+ 
+const elemCreator = (tagName, atr = {}, text = '') => {
+  const element = document.createElement(tagName);
+  Object.keys(atr).forEach((key) => {
+    element.setAttribute(key, atr[key]);
+  });
+  element.textContent = text;
   return element;
-}
-
-const renderTasksArray = (tasksArray) => {
-  for(let i = 0; i < tasksArray.length; i++){
-    const element = tasksArray[i];
-    console.log(element);
-
-    const task = createElement("li", "task");
-    const taskTitle = createElement("div","task_title", element.title);
-    const taskDescription = createElement("div", "task_description", element.task);
-    const img = createElement("IMG", "delete_button");
-    img.src = "./assets/delete_icon.png";
-    task.appendChild(img);
-    
-
-    task.append(taskTitle, taskDescription, img);
-    tasks.prepend(task);
+};
+ 
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  if (this.titleInput.value.trim().length > 0) {
+    let newTask = {
+      id: ++taskId,
+      title: this.titleInput.value,
+      description: this.descInput.value,
+    };
+    taskArr.push(newTask);
+    taskRender(taskArr);
+    this.titleInput.value = '';
+    this.descInput.value = '';
+    errorText.innerHTML = '';
+    console.log(taskArr);
+    toggleCreateTaskModal();
   }
-}
-
-const clearInput = () => {
-  titleInput.value = " ";
-  descriptionInput.value = " ";
-}
-
-const clearTask = (tasks) => {
-  tasks.innerHTML = '';
-}
-
-// validate = () => {
-//   if(!messageInput.value) {
-//     alert("You have not entered a message!");
-//   const}
-//   if(!authorInput.value || messageInput.value) {
-//     authorInput.value = "Unknowm author";
-//   }
-// } 
-
-renderTasksArray(tasksArray);
-
-saveBtn.addEventListener("click", function(){
-  const task = {
-    title: titleInput.value,
-    task: descriptionInput.value
+  else{
+    errorText.innerHTML = "Заполните заголовок!";
   }
-  
-  tasksArray.push(task);
-  clearInput();
-  console.log(tasks);
-  clearTask(tasks);
-  console.log(tasks);
-  renderTasksArray(tasksArray);
 });
+ 
+function taskRender(arr) {
+  tasks.innerHTML = '';
+  console.log(arr);
+  arr.forEach((task) => {
+    const taskItem = elemCreator('li', { class: 'task', id: task.id });
+    const taskHeader = elemCreator('div', {class: 'task_header'});
+    const taskTitle = elemCreator('div', {class: 'task_title'}, task.title);
+    const taskDesc = elemCreator('div', {class: 'task_description'}, task.description);
+
+    const deleteIcon = elemCreator('img', {class: 'delete_button'});
+    deleteIcon.src = "./assets/delete_icon.png";
+    const checkbox = elemCreator('input', {type: 'checkbox', class: 'checkbox'});
+
+    taskHeader.append(taskTitle, checkbox);
+    taskItem.append(taskHeader, taskDesc, deleteIcon);
+    tasks.prepend(taskItem);
+    
+  });
+  
+  addListeners();
+}
+ 
+function addListeners() {
+  const taskList = document.querySelectorAll('.task');
+  taskList.forEach((task) => {
+    const checkbox = task.querySelector('.checkbox');
+    const title = task.querySelector('.task_title');
+    const deleteBtn = task.querySelector('.delete_button');
+    checkbox.addEventListener('change', function () {
+      if (checkbox.checked) {
+        title.style.textDecoration = 'line-through';
+      } else {
+        title.style.textDecoration = 'none';
+      }
+    });
+
+    deleteBtn.addEventListener('click', function () {
+    toggleDeleteModal();
+
+    const modalDeleteBtn = document.querySelector('.delete-button');
+    modalDeleteBtn.addEventListener('click', function(){
+    taskArr = taskArr.filter((item) => {
+      console.log(item.id);
+      console.log(deleteBtn.parentElement.id);
+      
+      return item.id != deleteBtn.parentElement.id;
+      
+    });
+      toggleDeleteModal();
+      console.log(taskArr);
+      taskRender(taskArr);
+      });
+    });
+  });
+}
+
+
+
